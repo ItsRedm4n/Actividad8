@@ -29,32 +29,30 @@ public class Deck {
         System.out.println("Se mezcló el Deck.");
     }
 
-    public Card head() {
+    public Card head() throws Exception {
         if (!cards.isEmpty()) {
             Card card = cards.remove(0);
             System.out.println(card.toString());
-            System.out.println("Quedan " + cards.size() + " cartas en deck");
+            System.out.println("Quedan " + cards.size() + " cartas en el deck");
             return card;
         } else {
-            System.out.println("No quedan cartas en el deck.");
-            return null;
+            throw new Exception("Se han agotado las cartas");
         }
     }
 
-    public Card pick() {
+    public Card pick() throws Exception {
         if (!cards.isEmpty()) {
             int randomIndex = (int) (Math.random() * cards.size());
             Card card = cards.remove(randomIndex);
             System.out.println(card.toString());
-            System.out.println("Quedan " + cards.size() + " cartas en deck");
+            System.out.println("Quedan " + cards.size() + " cartas en el deck");
             return card;
         } else {
-            System.out.println("No quedan cartas en el deck.");
-            return null;
+            throw new Exception("Se han agotado las cartas");
         }
     }
 
-    public List<Card> hand() {
+    public List<Card> hand() throws Exception {
         List<Card> hand = new ArrayList<>();
         if (cards.size() >= 5) {
             for (int i = 0; i < 5; i++) {
@@ -62,9 +60,9 @@ public class Deck {
                 System.out.println(card.toString());
                 hand.add(card);
             }
-            System.out.println("Quedan " + cards.size() + " cartas en deck");
+            System.out.println("Quedan " + cards.size() + " cartas en el deck");
         } else {
-            System.out.println("No hay suficientes cartas para repartir una mano.");
+            throw new Exception("Se han agotado las cartas");
         }
         return hand;
     }
