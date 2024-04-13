@@ -11,6 +11,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return suit + "," + color + "," + value;
+        return color + " " + value + " de " + suit;
     }
 }
